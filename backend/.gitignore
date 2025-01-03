@@ -1,0 +1,51 @@
+###> symfony/framework-bundle ###
+/.env.local
+/.env.local.php
+/.env.*.local
+/config/secrets/prod/prod.decrypt.private.php
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+
+# Symfony-specific
+/.env
+/.env.dev
+/.env.test
+/.env.*.dev
+
+# Logs and cache
+/var/log/
+/var/cache/
+
+# Temporary files
+/var/sessions/
+/var/tmp/
+
+# Doctrine migrations
+/migrations/*
+
+# IDE/editor-specific files
+/.idea/
+/.vscode/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# PHPUnit and testing files
+/phpunit.xml.dist
+/phpunit.result.cache
+
+# Composer's lock file for non-production environments
+/composer.lock
+
+# Symfony local configuration files
+/config/parameters.yml
+/config/parameters.yml.dist
+
+# Composer-generated files
+/composer.phar
+
+# Node modules (if using Symfony with Webpack or other frontend tools)
+node_modules/
