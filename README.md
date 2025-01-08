@@ -20,10 +20,16 @@ Contiene el código fuente del **backend** desarrollado con **Symfony**.
 - **MySQL**: 8.0.4 o superior
 - **Composer**: 2.8.4 o superior
 - **Node.js**: 20.10.0 o superior
+- **Symfony CLI**
 - **NPM**: o **Yarn**
 
 
 ## ⚙ Instalación y Configuración
+1. Clonar el repositorio:
+```bash
+git clone https://github.com/valentinaless07/challenge-iprofesional
+```
+
 
 ### Backend (Symfony)
 
@@ -65,7 +71,7 @@ npm install
 ```
 2. En el archivo `.env` establecer la conexión con el backend:
 ```bash
-NEXT_PUBLIC_API_BASE_URL='https://localhost:<port>'
+NEXT_PUBLIC_API_BASE_URL="https://localhost:<port>"
 ```
 
 3. Iniciar el servidor frontend:
