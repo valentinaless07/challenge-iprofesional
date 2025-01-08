@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
 class Product
@@ -14,22 +15,30 @@ class Product
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['product'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['product'])]
     private ?string $name = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
+    #[Groups(['product'])]
     private ?string $description = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
+    #[Groups(['product'])]
     private ?string $price = null;
 
     /**
      * @var Collection<int, Category>
      */
     #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'products')]
+    #[Groups(['product'])]
     private Collection $categories;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $image = null;
 
     public function __construct()
     {
@@ -101,6 +110,37 @@ class Product
     public function removeCategory(Category $category): static
     {
         $this->categories->removeElement($category);
+
+        return $this;
+    }
+    public function getMaxDiscount(): float
+    {
+        $maxDiscount = 0;
+
+        foreach ($this->getCategories() as $category) {
+            foreach ($category->getDiscountCodes() as $discountCode) {
+                $maxDiscount = max($maxDiscount, (float) $discountCode->getPercentage());
+            }
+        }
+
+        return $maxDiscount;
+    }
+    public function calculateDiscountedPrice(): float
+    {
+        $price = (float) $this->getPrice();
+        $maxDiscount = $this->getMaxDiscount();
+
+        return $price - $price * $maxDiscount / 100;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): static
+    {
+        $this->image = $image;
 
         return $this;
     }
