@@ -39,7 +39,7 @@ class ProductController extends AbstractController
 
             // Verifico si el producto pertenece a la categoría 'Outlet' para aplicar el descuento
             foreach ($categories as $category) {
-                if ($category->getName() === 'Outlet') {
+                if (strcasecmp($category->getName(), 'Outlet') === 0) {
                     $discount = $outletDiscountPercentage;
                     break;
                 }
