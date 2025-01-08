@@ -51,12 +51,17 @@ DATABASE_URL="mysql://usuario:contraseña@localhost:3306/ecommerce_challenge"
 ```bash
 php bin/console doctrine:database:create
 ```
-4. Aplicar las migraciones:
+4. Generar las migraciones pendientes:
+
+```bash
+php bin/console doctrine:migrations:diff
+```
+5. Aplicar las migraciones:
 
 ```bash
 php bin/console doctrine:migrations:migrate
 ```
-5. Iniciar el servidor backend:
+6. Iniciar el servidor backend:
 
 ```bash
 symfony serve
