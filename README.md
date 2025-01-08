@@ -81,7 +81,7 @@ npm install
 ```
 2. En el archivo `.env` establecer la conexión con el backend:
 ```bash
-NEXT_PUBLIC_API_BASE_URL="https://localhost:<port>"
+NEXT_PUBLIC_API_BASE_URL="http://localhost:<port>"
 ```
 
 3. Iniciar el servidor frontend:
