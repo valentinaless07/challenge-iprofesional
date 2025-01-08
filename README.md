@@ -40,28 +40,33 @@ git clone https://github.com/valentinaless07/challenge-iprofesional
 ```bash
 composer install
 ```
-2. En el archivo `.env` del backend, configura los parámetros de conexión a la base de datos MySQL:
+2. Renombrar el archivo .env.example a .env:
+
+```bash
+mv .env.example .env
+```
+3. En el archivo `.env` del backend, configura los parámetros de conexión a la base de datos MySQL:
 
 ```bash
 DATABASE_URL="mysql://usuario:contraseña@localhost:3306/ecommerce_challenge"
 ```
 
-3. Crear la base de datos y las tablas:
+4. Crear la base de datos y las tablas:
 
 ```bash
 php bin/console doctrine:database:create
 ```
-4. Generar las migraciones pendientes:
+5. Generar las migraciones pendientes:
 
 ```bash
 php bin/console doctrine:migrations:diff
 ```
-5. Aplicar las migraciones:
+6. Aplicar las migraciones:
 
 ```bash
 php bin/console doctrine:migrations:migrate
 ```
-6. Iniciar el servidor backend:
+7. Iniciar el servidor backend:
 
 ```bash
 symfony serve
